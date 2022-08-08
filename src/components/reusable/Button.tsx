@@ -1,17 +1,17 @@
 type buttonProps = {
   version: string;
   type?: 'submit' | 'reset' | 'button';
-  isDisabled: boolean;
+  btnDisabled: boolean;
 };
 
 export default function Button({
   // children,
   version,
   type,
-  isDisabled,
+  btnDisabled,
 }: buttonProps) {
   return (
-    <button className={`btn btn-${version}`} type={type} disabled={isDisabled}>
+    <button className={`btn btn-${version}`} type={type} disabled={btnDisabled}>
       Submit
     </button>
   );
@@ -20,5 +20,5 @@ export default function Button({
 Button.defaultProps = {
   version: 'primary',
   type: 'button',
-  isDisabled: false,
+  btnDisabled: true,
 };
