@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FeedbackForm from './components/FeedbackForm';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import Header from './components/Header';
@@ -6,7 +7,6 @@ import { FeedbackData } from './data/FeedbackData';
 
 function App() {
   const [feedbackData, setFeedbackData] = useState(FeedbackData);
-  // console.log('fd', feedbackData);
 
   function deleteFeedItem(deleteid: number) {
     setFeedbackData(
@@ -28,6 +28,7 @@ function App() {
       <Header />
       <div className="container">
         <h1>My App</h1>
+        <FeedbackForm />
         <FeedbackStats feedbackData={feedbackData} />
         <FeedbackList feedback={feedbackData} handleDelete={deleteFeedItem} />
       </div>

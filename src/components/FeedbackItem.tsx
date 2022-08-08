@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Card from './Card';
+import Card from './reusable/Card';
 import { FaTimes } from 'react-icons/fa';
 
 type itemProps = {
