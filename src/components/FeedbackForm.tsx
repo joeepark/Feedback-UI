@@ -11,7 +11,7 @@ type feedbackProps = {
   };
 };
 
-export default function FeedbackForm({ addFeedback }: feedbackProps) {
+export default function FeedbackForm({ addFeedback }: any) {
   const [text, setText] = useState('');
   const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);

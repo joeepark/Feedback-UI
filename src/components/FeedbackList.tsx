@@ -1,23 +1,16 @@
+import { useContext } from 'react';
+import FeedbackContext from '../context/FeedbackContext';
 import FeedbackItem from './FeedbackItem';
 
-type feedbackProps = {
-  feedback: {
-    id: number;
-    rating: number;
-    text: string;
-  }[];
-  handleDelete: Function;
-};
+export default function FeedbackList({ handleDelete }: any) {
+  const { feedback } = useContext(FeedbackContext);
+  console.log('fbd', feedback);
 
-export default function FeedbackList({
-  feedback,
-  handleDelete,
-}: feedbackProps) {
   return (
     <div className="feedback-list">
-      {feedback.map((item) => (
+      {/* {feedbackData.map((item) => (
         <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
-      ))}
+      ))} */}
     </div>
   );
 }
