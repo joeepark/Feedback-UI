@@ -3,8 +3,17 @@ import RatingSelect from './RatingSelect';
 import Button from './reusable/Button';
 import Card from './reusable/Card';
 
-export default function FeedbackForm() {
+type feedbackProps = {
+  addFeedback: {
+    id: string;
+    rating: number;
+    text: string;
+  };
+};
+
+export default function FeedbackForm({ addFeedback }: feedbackProps) {
   const [text, setText] = useState('');
+  const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
 
@@ -20,12 +29,20 @@ export default function FeedbackForm() {
     return;
   }
 
-  console.log(text.length);
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const newFeedback = {
+      text,
+      rating,
+    };
+    addFeedback(newFeedback);
+    return;
+  }
 
   return (
     <Card>
-      <form>
-        <RatingSelect />
+      <form onSubmit={handleSubmit}>
+        <RatingSelect select={(rating: number) => setRating(rating)} />
         <div className="input-group">
           <input
             type="text"

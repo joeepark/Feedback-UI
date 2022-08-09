@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-export default function RatingSelect() {
+export default function RatingSelect({ select }: any) {
   const [selected, setSelected] = useState(10);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSelected(+e.target.value);
+    select(+e.target.value);
     return;
   }
-  console.log(selected);
-  
+
   return (
     <ul className="rating">
       <li>
