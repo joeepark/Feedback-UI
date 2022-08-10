@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
 
-//@ts-ignore
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }: any) => {
