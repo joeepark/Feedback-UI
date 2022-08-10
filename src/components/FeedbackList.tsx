@@ -1,16 +1,24 @@
 import { useContext } from 'react';
 import FeedbackContext from '../context/FeedbackContext';
 import FeedbackItem from './FeedbackItem';
+import Card from './reusable/Card';
 
-export default function FeedbackList({ handleDelete }: any) {
+export default function FeedbackList() {
   const { feedback } = useContext(FeedbackContext);
-  console.log('fbd', feedback);
 
+  if (feedback.length === 0) {
+    return (
+      <Card>
+        <h2 style={{ textAlign: 'center' }}>No data to show</h2>
+      </Card>
+    );
+  }
+  // console.log('fbList', feedback);
   return (
     <div className="feedback-list">
-      {/* {feedbackData.map((item) => (
-        <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
-      ))} */}
+      {feedback.map((item) => (
+        <FeedbackItem key={item.id} item={item} />
+      ))}
     </div>
   );
 }

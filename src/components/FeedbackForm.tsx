@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import FeedbackContext from '../context/FeedbackContext';
 import RatingSelect from './RatingSelect';
 import Button from './reusable/Button';
 import Card from './reusable/Card';
@@ -11,11 +12,21 @@ type feedbackProps = {
   };
 };
 
-export default function FeedbackForm({ addFeedback }: any) {
+export default function FeedbackForm() {
   const [text, setText] = useState('');
   const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
+  const { addFeedback, feedbackEdit, updateFeedback } = useContext(FeedbackContext);
+
+  useEffect(() => {
+    if (feedbackEdit.edit === true) {
+      setBtnDisabled(false);
+      setText(feedbackEdit.item.text);
+      setRating(feedbackEdit.item.rating);
+      // console.log(feedbackEdit);
+    }
+  }, [feedbackEdit]);
 
   function formConditional(e: React.ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);
@@ -35,7 +46,11 @@ export default function FeedbackForm({ addFeedback }: any) {
       text,
       rating,
     };
-    addFeedback(newFeedback);
+    if (feedbackEdit.edit === true) {
+      updateFeedback(feedbackEdit.item.id, newFeedback);
+    } else {
+      addFeedback(newFeedback);
+    }
     return;
   }
 
@@ -48,6 +63,7 @@ export default function FeedbackForm({ addFeedback }: any) {
             type="text"
             placeholder="Submit a review"
             onChange={formConditional}
+            value={text}
           />
           <Button type="submit" btnDisabled={btnDisabled}></Button>
         </div>
