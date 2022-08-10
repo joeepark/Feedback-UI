@@ -12,22 +12,18 @@ type itemProps = {
 };
 
 export default function FeedbackItem({ item }: itemProps) {
-  const { id, rating, text } = item;
-  const [ratingDisplay, setRatingDisplay] = useState(rating);
-  const [textDisplay, setTextDisplay] = useState(text);
   const { deleteFeedItem, editFeedback } = useContext(FeedbackContext);
-  
   return (
     <>
       <Card>
-        <div className="num-display">{ratingDisplay}</div>
+        <div className="num-display">{item.rating}</div>
         <button className="edit" onClick={() => editFeedback(item)}>
           <FaEdit color="purple" />
         </button>
-        <button className="close" onClick={() => deleteFeedItem(id)}>
+        <button className="close" onClick={() => deleteFeedItem(item.id)}>
           <FaTimes color="purple" />
         </button>
-        <div className="text-display">{textDisplay}</div>
+        <div className="text-display">{item.text}</div>
       </Card>
     </>
   );

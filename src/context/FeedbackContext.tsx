@@ -1,20 +1,39 @@
-import { createContext, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { FeedbackData } from '../data/FeedbackData';
+import { createContext, useEffect, useState } from 'react';
 
 //@ts-ignore
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }: any) => {
-  const [feedback, setFeedback] = useState(FeedbackData);
+  const [feedback, setFeedback] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    fetch('http://localhost:5000/feedback')
+      .then((response) => response.json())
+      .then((data) => setFeedback(data))
+      .catch((err) => console.error(err));
+  };
 
   function deleteFeedItem(deleteid: number) {
-    setFeedback(feedback.filter((feedbackid) => feedbackid.id !== deleteid));
+    fetch(`http://localhost:5000/feedback/${deleteid}`, {
+      method: 'DELETE',
+    })
+      .then((data) => setFeedback(feedback.filter((item) => item.id !== deleteid)))
+      .catch((err) => console.error(err));
   }
 
   function addFeedback(newFeedback: any) {
-    newFeedback.id = uuidv4();
-    setFeedback([newFeedback, ...feedback]);
+    fetch('http://localhost:5000/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newFeedback),
+    })
+      .then((response) => response.json())
+      .then((data) => setFeedback([data, ...feedback]))
+      .catch((err) => console.error(err));
   }
 
   const [feedbackEdit, setFeedbackEdit] = useState({
@@ -30,10 +49,17 @@ export const FeedbackProvider = ({ children }: any) => {
   }
 
   function updateFeedback(id, upitem) {
-    setFeedback(feedback.map((item) => (item.id === id ? { ...item, ...upitem } : item)));
+    fetch(`http://localhost:5000/feedback/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(upitem),
+    })
+      .then((response) => response.json())
+      .then((data) =>
+        setFeedback(feedback.map((item) => (item.id === id ? { ...item, ...data } : item)))
+      )
+      .catch((err) => console.error(err));
   }
-  console.log('fb', feedback);
-  // console.log('feedbackEdit', feedbackEdit);
   return (
     <FeedbackContext.Provider
       value={{ feedback, deleteFeedItem, addFeedback, feedbackEdit, editFeedback, updateFeedback }}

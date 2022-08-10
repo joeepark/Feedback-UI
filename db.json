@@ -1,0 +1,29 @@
+{
+  "feedback": [
+    {
+      "text": "It could have been better",
+      "rating": 1,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "rating": 7,
+      "text": "Pretty good overall. Thanks for the help"
+    },
+    {
+      "id": 3,
+      "rating": 3,
+      "text": "I did not like the service. I felt like I was overcharged."
+    },
+    {
+      "text": "It was good here",
+      "rating": 8,
+      "id": 4
+    },
+    {
+      "text": "Here is an average rating",
+      "rating": 5,
+      "id": 5
+    }
+  ]
+}

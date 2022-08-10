@@ -9,7 +9,6 @@ function App() {
     <FeedbackProvider>
       <Header/>
       <div className="container">
-        <h1>My App</h1>
         <FeedbackForm />
         <FeedbackStats />
         <FeedbackList />
