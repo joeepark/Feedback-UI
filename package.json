@@ -2,7 +2,7 @@
   "name": "feedback-ui",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "main": "server.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
