@@ -1,17 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Card from './reusable/Card';
 import { FaTimes, FaEdit } from 'react-icons/fa';
 import FeedbackContext from '../context/FeedbackContext';
 
-type itemProps = {
-  item: {
-    id: number;
-    rating: number;
-    text: string;
-  };
-};
-
-export default function FeedbackItem({ item }: itemProps) {
+export default function FeedbackItem({ item }) {
   const { deleteFeedItem, editFeedback } = useContext(FeedbackContext);
   return (
     <>

@@ -1,11 +1,6 @@
 import React from 'react';
 
-type ReactNode = {
-  reverse: boolean;
-  children: React.ReactNode;
-};
-
-export default function Card({ children, reverse }: ReactNode) {
+export default function Card({ children, reverse }) {
   return (
     <div
       className="card"
@@ -18,7 +13,3 @@ export default function Card({ children, reverse }: ReactNode) {
     </div>
   );
 }
-
-Card.defaultProps = {
-  reverse: false,
-};

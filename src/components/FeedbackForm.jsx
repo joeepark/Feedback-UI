@@ -4,14 +4,6 @@ import RatingSelect from './RatingSelect';
 import Button from './reusable/Button';
 import Card from './reusable/Card';
 
-type feedbackProps = {
-  addFeedback: {
-    id: string;
-    rating: number;
-    text: string;
-  };
-};
-
 export default function FeedbackForm() {
   const [text, setText] = useState('');
   const [rating, setRating] = useState(10);
@@ -28,7 +20,7 @@ export default function FeedbackForm() {
     }
   }, [feedbackEdit]);
 
-  function formConditional(e: React.ChangeEvent<HTMLInputElement>) {
+  function formConditional(e) {
     setText(e.target.value);
     if (text.length < 9) {
       setMessage('Text must be at least 10 characters');
@@ -40,7 +32,7 @@ export default function FeedbackForm() {
     return;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e) {
     e.preventDefault();
     const newFeedback = {
       text,
@@ -53,12 +45,12 @@ export default function FeedbackForm() {
     }
     return;
   }
-
+  
   return (
     <Card>
       <form onSubmit={handleSubmit}>
         <h2>How would you rate our service today?</h2>
-        <RatingSelect select={(rating: number) => setRating(rating)} />
+        <RatingSelect select={(rating) => setRating(rating)} />
         <div className="input-group">
           <input
             type="text"

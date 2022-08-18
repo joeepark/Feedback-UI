@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 const FeedbackContext = createContext();
 
-export const FeedbackProvider = ({ children }: any) => {
+export const FeedbackProvider = ({ children }) => {
   const [feedback, setFeedback] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const FeedbackProvider = ({ children }: any) => {
       .catch((err) => console.error(err));
   };
 
-  function deleteFeedItem(deleteid: number) {
+  function deleteFeedItem(deleteid) {
     fetch(`http://localhost:5000/feedback/${deleteid}`, {
       method: 'DELETE',
     })
@@ -24,7 +24,7 @@ export const FeedbackProvider = ({ children }: any) => {
       .catch((err) => console.error(err));
   }
 
-  function addFeedback(newFeedback: any) {
+  function addFeedback(newFeedback) {
     fetch('http://localhost:5000/feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -59,6 +59,7 @@ export const FeedbackProvider = ({ children }: any) => {
       )
       .catch((err) => console.error(err));
   }
+
   return (
     <FeedbackContext.Provider
       value={{ feedback, deleteFeedItem, addFeedback, feedbackEdit, editFeedback, updateFeedback }}

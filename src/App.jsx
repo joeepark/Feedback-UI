@@ -7,7 +7,7 @@ import { FeedbackProvider } from './context/FeedbackContext';
 function App() {
   return (
     <FeedbackProvider>
-      <Header/>
+      <Header />
       <div className="container">
         <FeedbackForm />
         <FeedbackStats />
@@ -16,5 +16,4 @@ function App() {
     </FeedbackProvider>
   );
 }
-
 export default App;

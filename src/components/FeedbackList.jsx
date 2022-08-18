@@ -5,7 +5,6 @@ import Card from './reusable/Card';
 
 export default function FeedbackList() {
   const { feedback } = useContext(FeedbackContext);
-
   if (feedback.length === 0) {
     return (
       <Card>
@@ -13,7 +12,7 @@ export default function FeedbackList() {
       </Card>
     );
   }
-  // console.log('fbList', feedback);
+
   return (
     <div className="feedback-list">
       {feedback.map((item) => (
