@@ -10,14 +10,14 @@ export const FeedbackProvider = ({ children }) => {
   }, []);
 
   const fetchData = () => {
-    fetch('http://localhost:3000/feedback')
+    fetch('https://feedback-interfaceapp.herokuapp.com/feedback')
       .then((response) => response.json())
       .then((data) => setFeedback(data))
       .catch((err) => console.error(err));
   };
 
   function deleteFeedItem(deleteid) {
-    fetch(`http://localhost:3000/feedback/${deleteid}`, {
+    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback${deleteid}`, {
       method: 'DELETE',
     })
       .then((data) => setFeedback(feedback.filter((item) => item.id !== deleteid)))
@@ -25,7 +25,7 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   function addFeedback(newFeedback) {
-    fetch('http://localhost:3000/feedback', {
+    fetch('https://feedback-interfaceapp.herokuapp.com/feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newFeedback),
@@ -48,7 +48,7 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   function updateFeedback(id, upitem) {
-    fetch(`http://localhost:3000/feedback/${id}`, {
+    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(upitem),
