@@ -1,6 +1,9 @@
+## Try testing a live demo of the app!
+https://feedback-formapp.netlify.app/
+
 ## Feedback-UI is a full-stack app
 The feedback app is built using React, TypeScript, and JSON Server. A user is allowed to add, edit, and delete their feedback.
 It is a pretty simple app, but I got some good practice using TypeScript to build a fully functional CRUD app.
-<img src="./assests/feedback-1.png">
-<img src="./assests/feedback-2.png">
-<img src="./assests/feedback-3.png">
+<img src="./src/assets/feedback-1.png">
+<img src="./src/assets/feedback-2.png">
+<img src="./src/assets/feedback-3.png">
