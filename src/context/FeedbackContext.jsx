@@ -17,7 +17,7 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   function deleteFeedItem(deleteid) {
-    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback${deleteid}`, {
+    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback/${deleteid}`, {
       method: 'DELETE',
     })
       .then((data) => setFeedback(feedback.filter((item) => item.id !== deleteid)))
@@ -48,7 +48,7 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   function updateFeedback(id, upitem) {
-    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback${id}`, {
+    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(upitem),
