@@ -4,7 +4,15 @@ import FeedbackItem from './FeedbackItem';
 import Card from './reusable/Card';
 
 export default function FeedbackList() {
-  const { feedback } = useContext(FeedbackContext);
+  const { feedback, loading } = useContext(FeedbackContext);
+
+  if (loading) {
+    return (
+      <Card>
+        <h2 style={{ textAlign: 'center' }}>Loading...</h2>
+      </Card>
+    );
+  }
   if (feedback.length === 0) {
     return (
       <Card>
@@ -12,7 +20,6 @@ export default function FeedbackList() {
       </Card>
     );
   }
-
   return (
     <div className="feedback-list">
       {feedback.map((item) => (

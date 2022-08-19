@@ -4,6 +4,7 @@ const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
   const [feedback, setFeedback] = useState([]);
+  const [loading, setLoading ] = useState(true);
 
   useEffect(() => {
     fetchData();
@@ -13,6 +14,7 @@ export const FeedbackProvider = ({ children }) => {
     fetch('https://feedback-interfaceapp.herokuapp.com/feedback')
       .then((response) => response.json())
       .then((data) => setFeedback(data))
+      .then((data) => setLoading(false))
       .catch((err) => console.error(err));
   };
 
@@ -62,7 +64,7 @@ export const FeedbackProvider = ({ children }) => {
 
   return (
     <FeedbackContext.Provider
-      value={{ feedback, deleteFeedItem, addFeedback, feedbackEdit, editFeedback, updateFeedback }}
+      value={{ feedback, deleteFeedItem, addFeedback, feedbackEdit, editFeedback, updateFeedback, loading }}
     >
       {children}
     </FeedbackContext.Provider>

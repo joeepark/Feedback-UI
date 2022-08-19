@@ -5,6 +5,10 @@ export default function FeedbackStats({ feedbackData }) {
   const { feedback } = useContext(FeedbackContext);
   let average = feedback.reduce((acc, curr) => acc + curr.rating, 0) / feedback.length;
   average = average.toFixed(1).replace(/[./]0$/, '');
+
+  if (average === NaN) {
+    return 0;
+  } 
   return (
     <div className="feedback-stats">
       <h4>Reviews {feedback.length}</h4>
