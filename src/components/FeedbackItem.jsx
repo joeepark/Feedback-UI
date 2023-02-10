@@ -5,6 +5,7 @@ import FeedbackContext from '../context/FeedbackContext';
 
 export default function FeedbackItem({ item }) {
   const { deleteFeedItem, editFeedback } = useContext(FeedbackContext);
+
   return (
     <>
       <Card>

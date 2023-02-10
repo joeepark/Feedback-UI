@@ -4,14 +4,15 @@ const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
   const [feedback, setFeedback] = useState([]);
-  const [loading, setLoading ] = useState(true);
-  
+  const [loading, setLoading] = useState(true);
+  const API_URL = 'http://localhost:3000';
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = () => {
-    fetch('https://feedback-interfaceapp.herokuapp.com/feedback')
+    fetch(`${API_URL}/feedback`)
       .then((response) => response.json())
       .then((data) => setFeedback(data))
       .then((data) => setLoading(false))
@@ -19,7 +20,7 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   function deleteFeedItem(deleteid) {
-    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback/${deleteid}`, {
+    fetch(`${API_URL}/feedback/${deleteid}`, {
       method: 'DELETE',
     })
       .then((data) => setFeedback(feedback.filter((item) => item.id !== deleteid)))
@@ -27,7 +28,7 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   function addFeedback(newFeedback) {
-    fetch('https://feedback-interfaceapp.herokuapp.com/feedback', {
+    fetch(`${API_URL}/feedback`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newFeedback),
@@ -50,7 +51,7 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   function updateFeedback(id, upitem) {
-    fetch(`https://feedback-interfaceapp.herokuapp.com/feedback/${id}`, {
+    fetch(`${API_URL}/feedback/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(upitem),
@@ -64,7 +65,15 @@ export const FeedbackProvider = ({ children }) => {
 
   return (
     <FeedbackContext.Provider
-      value={{ feedback, deleteFeedItem, addFeedback, feedbackEdit, editFeedback, updateFeedback, loading }}
+      value={{
+        feedback,
+        loading,
+        feedbackEdit,
+        deleteFeedItem,
+        addFeedback,
+        updateFeedback,
+        editFeedback,
+      }}
     >
       {children}
     </FeedbackContext.Provider>

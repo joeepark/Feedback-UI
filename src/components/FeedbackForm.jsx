@@ -16,7 +16,6 @@ export default function FeedbackForm() {
       setBtnDisabled(false);
       setText(feedbackEdit.item.text);
       setRating(feedbackEdit.item.rating);
-      // console.log(feedbackEdit);
     }
   }, [feedbackEdit]);
 
@@ -29,11 +28,11 @@ export default function FeedbackForm() {
       setMessage('');
       setBtnDisabled(false);
     }
-    return;
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    e.stopPropagation();
     const newFeedback = {
       text,
       rating,
@@ -43,7 +42,6 @@ export default function FeedbackForm() {
     } else {
       addFeedback(newFeedback);
     }
-    return;
   }
   
   return (

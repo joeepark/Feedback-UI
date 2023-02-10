@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* Reset Styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+
+/* General Styles */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #202142;
@@ -32,6 +35,8 @@ header {
   margin-bottom: 30px;
 }
 
+
+/* Review Card Styles */
 .card {
   background-color: #fff;
   color: #333;
@@ -52,6 +57,8 @@ header {
   text-align: center;
 }
 
+
+/* Rating Styles */
 .rating {
   display: flex;
   align-items: center;
@@ -100,6 +107,8 @@ header {
   color: #fff;
 }
 
+
+/* Input Styles */
 .input-group {
   display: flex;
   flex-direction: row;
@@ -145,6 +154,8 @@ input:focus {
   right: 40px;
 }
 
+
+/* Button Styles */
 .btn {
   color: #fff;
   border: 0;
@@ -185,15 +196,11 @@ input:focus {
   color: rebeccapurple;
 }
 
-/* FIX: Remove position: absolute to keep about icon at the bottom of the
- * document */
 .about-link {
   display: flex;
   justify-content: flex-end;
 }
 
-/* FIX: Remove position: absolute to keep about icon at the bottom of the
- * document */
 .about-link a {
   color: #fff;
   cursor: pointer;
@@ -211,6 +218,8 @@ input:focus {
   margin: 10px 0;
 }
 
+
+/* Media Queries */
 @media (max-width: 600px) {
   .rating li {
     margin: 10px 3px;
